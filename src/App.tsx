@@ -26,8 +26,7 @@ import { CheckoutCancel } from './pages/checkout/CheckoutCancel'
 import { CheckoutPage } from './pages/CheckoutPage'
 
 
-// const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || '');
-const stripePromise = loadStripe("pk_test_51Nwt8KJkLvblZeilhJ7hvuuhfJVwDRLjQERAVcvBbBXQd1KgMFiNJgf5OyuhrbyGk8ckA8umN4VG8RUHV9yICGQ000A3ygESkv" || '')
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || '');
 
 
 
