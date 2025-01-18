@@ -6,31 +6,18 @@ interface IdealBankSelectorProps {
   onBankSelect: (bankId: string) => void;
 }
 
+
+
 const idealBanks = [
   {
-    id: "ing",
-    name: "ING",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8UyXKdO0tg8P2yNQR4GA7MuXrJyKBahAiNg&s"
-  },
-  {
-    id: "abn",
+    id: "abn_amro",
     name: "ABN AMRO",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAGSouxoo2C7lnAmouNdDBCMTNsD91LAb_xw&s"
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIJmXXFtAnZlX8DEyYUffN8JWKrW7hhws2cg&s" //problem
   },
   {
-    id: "rabobank",
-    name: "Rabobank",
-    logo: "https://upload.wikimedia.org/wikipedia/en/5/54/Rabobank_logo.svg"
-  },
-  {
-    id: "asn",
+    id: "asn_bank",
     name: "ASN Bank",
     logo: "https://www.ecobusiness.fund/fileadmin/_processed_/6/c/csm_2017_07_ASN_Bank_logo_ef9949a5c3.png"
-  },
-  {
-    id: "sns",
-    name: "SNS Bank",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgJesb2AILerOWRKlncyBFRquouIV7mSvJ1Q&s"
   },
   {
     id: "bunq",
@@ -38,46 +25,72 @@ const idealBanks = [
     logo: "https://logowik.com/content/uploads/images/bunq6945.jpg"
   },
   {
+    id: "handelsbanken",
+    name: "Handelsbanken",
+    logo: "https://play-lh.googleusercontent.com/T0jwta73h6MumYW2-BEcphE1Qeixg_fXiiWFzxNPpMDhM1RnTm-43ROWas9gtiRn-3U=w416-h235-rw" //problem
+  },
+  {
+    id: "ing",
+    name: "ING",
+    logo: "https://images.squarespace-cdn.com/content/v1/595d69672e69cf27605f00ba/1530202993227-98E14DXKZKGWMWV3QQYZ/ing-logo.jpg"
+  },
+  {
     id: "knab",
     name: "Knab",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFcX8iPCR9zWAteG71dJBeGKEpRtdngl1KTg&s"
+    logo: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/c68aca9388855.560cd82cbf857.jpg" //problem
+  },
+  {
+    id: "moneyou",
+    name: "Moneyou",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb8tND_WsIUCQBCrgUZcFq2v89knilOB53Z6pb31o0Sf08v-27dWExuhn0xEgxbhWtyzE&usqp=CAU" //problem
+  }, 
+  {
+    id: "n26",
+    name: "N26",
+    logo: "https://images.ctfassets.net/q33z48p65a6w/42Hvr3OYJgxAEdzoB2quix/83aedba1d73629c9953b615197915ac6/N26_Newsroom___N26_Logo_Thumbnail.png"
+  },
+  {
+    id: "nn",
+    name: "Nationale-Nederlanden",
+    logo: "https://betacareerevent.nl/wp-content/uploads/2023/03/logo-nn-social.png" //problem
+  },
+  {
+    id: "rabobank",
+    name: "Rabobank",
+    logo: "https://upload.wikimedia.org/wikipedia/en/5/54/Rabobank_logo.svg"
+  },
+  {
+    id: "regiobank",
+    name: "RegioBank",
+    logo: "https://play-lh.googleusercontent.com/PZgV2cnghoXncKtYszBxYDt-PVrC3HqRKw9IMyYDMGw8Mmb8rrqC3NRIIsQv8M4JOA=w240-h480-rw" //problem
   },
   {
     id: "revolut",
     name: "Revolut",
-    logo: "https://fintech.svetidej.com/images/stories/stran/600x315/revolut-logo.png"
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtBa9dOyzRP2Xwyshrri4ogz0dQbaTN73E-w&s" //problem
   },
   {
-    id: "VanLanschotKempen",
+    id: "sns_bank",
+    name: "SNS Bank",
+    logo: "https://careers.nsbank.com/media/client_16_s6_r0_v1597355118606_main.png" //problem
+  },
+  {
+    id: "triodos_bank",
+    name: "Triodos Bank",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThkrkVyP9DZZMIym7g-M3er9Ab_agM_Mx7wA&s" //problem
+  },
+  {
+    id: "van_lanschot",
     name: "Van Lanschot Kempen",
-    logo: "https://www.banken.nl/profile/media/van-lanschot-kempen-spotlight-2022-09-01-141233637.png"
+    logo: "https://www.banken.nl/profile/media/van-lanschot-kempen-spotlight-2022-09-01-141233637.png" //problem
   },
   {
-    id: "Yoursafe",
+    id: "yoursafe",
     name: "Yoursafe",
     logo: "https://www.yoursafe.com/images.v2/logo-yoursafe-small.png"
-  },
-  {
-    id: "N26",
-    name: "N26",
-    logo: "https://images.ctfassets.net/q33z48p65a6w/42Hvr3OYJgxAEdzoB2quix/83aedba1d73629c9953b615197915ac6/N26_Newsroom___N26_Logo_Thumbnail.png?fit=thumb&fm=png&q=80&w=600"
-  },
-  {
-    id: "Nationale-Nederlanden",
-    name: "Nationale-Nederlanden",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROjIqsLtjmUjXIV1Pz9YW0iWAIc8Q79-WH4g&s"
-  },
-  {
-    id: "RegioBank",
-    name: "RegioBank",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3h4jVxXkbabmXOBiftYhyocXRSiatfYR6Mw&s"
-  },
-  {
-    id: "Triodos Bank",
-    name: "Triodos Bank",
-    logo: "https://banner2.cleanpng.com/20180601/syv/kisspng-triodos-bank-uk-european-investment-bank-bank-5b118cad18f103.8751841615278767811022.jpg"
   }
 ];
+
 
 
 export function IdealBankSelector({ selectedBank, onBankSelect }: IdealBankSelectorProps) {
