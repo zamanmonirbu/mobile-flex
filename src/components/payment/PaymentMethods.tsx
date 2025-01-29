@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CreditCard, Building2 } from 'lucide-react';
 import { PaymentProcessor } from './PaymentProcessor';
 import { IdealPaymentForm } from './IdealPaymentForm';

@@ -19,13 +19,10 @@ import { ScrollToTop } from './components/ScrollToTop'
 import { Toast } from './components/Toast'
 import { useCartOverlay } from './hooks/useCartOverlay'
 import Footer from './components/Footer'
-import { Elements } from '@stripe/react-stripe-js'
-import { loadStripe } from '@stripe/stripe-js'
 import { CheckoutSuccess } from './pages/checkout/CheckoutSuccess'
 import { CheckoutCancel } from './pages/checkout/CheckoutCancel'
 import { CheckoutPage } from './pages/CheckoutPage'
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || '');
 
 
 
@@ -44,14 +41,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
             <Route path="/product/:id" element={<ProductPage />} />
-            <Route
-              path="/checkout"
-              element={
-                <Elements stripe={stripePromise}>
-                  <CheckoutPage />
-                </Elements>
-              }
-            />
+            <Route path="/checkout" element={<CheckoutPage />}/>
             <Route path="/checkout/success" element={<CheckoutSuccess />} />
             <Route path="/checkout/fail" element={<CheckoutCancel />} />
             <Route path="/about" element={<AboutUs />} />

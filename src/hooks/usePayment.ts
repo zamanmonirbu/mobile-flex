@@ -1,52 +1,32 @@
-import { useState } from "react";
+import axios from "axios";
 import { useCart } from "./useCart";
-import { BASE_URL } from "../api/baseUrl";
-import { useNavigate } from "react-router-dom";
+import { BASE_URL as baseUrl } from "../api/baseUrl";
+
 
 export function usePayment() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const { items } = useCart();
-  const navigate = useNavigate();
+  const { items, clearCart } = useCart();
 
-  const initializePayment = async (method: "ideal" | "card", bankId?: string) => {
-    setIsLoading(true);
-    setError(null);
-
-    const dataPass = {
-      method,
-      bankId,
-    };
-
-    console.log(dataPass, items);
-
+  const handlePayment = async (method: "creditcard" | "ideal") => {
     try {
-      const response = await fetch(`${BASE_URL}/api/payment/initialize`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ dataPass, items }),
+      const response = await axios.post(`${baseUrl}/api/payments/initiate`, {
+        items,
+        method,
       });
 
-      if (!response.ok) throw new Error("Failed to initialize payment");
-
-      const data = await response.json();
-
-      if (data.paymentUrl) {
-        // Navigate to external payment gateway
-        window.location.href = data.paymentUrl;
+      if (response.data.paymentUrl) {
+        console.log("response.data",response.data)
+        clearCart();
+        window.location.href = response.data.paymentUrl;
       } else {
-        // Handle in-app payment (e.g., card payment)
-        navigate("/checkout/success");
+        alert("Payment successful without redirect!");
       }
-      setIsLoading(false);
-    } catch (err: any) {
-      console.log(err.message);
-      setIsLoading(false);
-      setError(err.message || "Something went wrong");
-      navigate("/checkout/fail"); // Navigate to failure page on error
-      throw err;
+    } catch (error) {
+      console.error("Payment initiation failed:", error);
+      alert("Payment initiation failed. Please try again.");
     }
   };
 
-  return { initializePayment, isLoading, error };
+  return { handlePayment };
 }
+
+

@@ -106,8 +106,8 @@ export function CheckoutPage() {
               )}
               {currentStep === 2 && (
                 <PaymentMethods
-                  onBack={() => setCurrentStep(1)}
-                  onNext={() => setCurrentStep(3)}
+                  // onBack={() => setCurrentStep(1)}
+                  // onNext={() => setCurrentStep(3)}
                 />
               )}
               {currentStep === 3 && (

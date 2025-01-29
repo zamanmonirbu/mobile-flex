@@ -1,58 +1,65 @@
-import React from 'react';
+import { useState } from "react";
 
 interface CreditCardFormProps {
-  cardInfo: {
-    number: string;
-    expiry: string;
-    cvc: string;
-  };
-  onChange: (info: { number: string; expiry: string; cvc: string }) => void;
+  onSubmit: (cardDetails: { number: string; expiry: string; cvv: string }) => void;
 }
 
-export function CreditCardForm({ cardInfo, onChange }: CreditCardFormProps) {
+export function CreditCardForm({ onSubmit }: CreditCardFormProps) {
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
+  const [cvv, setCvv] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!cardNumber || !expiryDate || !cvv) {
+      alert("Please fill in all card details.");
+      return;
+    }
+
+    onSubmit({ number: cardNumber, expiry: expiryDate, cvv });
+  };
+
   return (
-    <div className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg">
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Card Number
-        </label>
+        <label className="block text-sm font-medium text-gray-700">Card Number</label>
         <input
           type="text"
-          value={cardInfo.number}
-          onChange={(e) => onChange({ ...cardInfo, number: e.target.value })}
-          className="w-full rounded-lg border-gray-200 focus:border-emerald-500 focus:ring-emerald-500"
-          placeholder="1234 5678 9012 3456"
-          maxLength={19}
+          value={cardNumber}
+          onChange={(e) => setCardNumber(e.target.value)}
+          placeholder="1234 5678 9101 1121"
+          className="w-full p-2 border rounded-md"
         />
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Expiry Date
-          </label>
+      <div className="flex gap-4">
+        <div className="w-1/2">
+          <label className="block text-sm font-medium text-gray-700">Expiry Date</label>
           <input
             type="text"
-            value={cardInfo.expiry}
-            onChange={(e) => onChange({ ...cardInfo, expiry: e.target.value })}
-            className="w-full rounded-lg border-gray-200 focus:border-emerald-500 focus:ring-emerald-500"
+            value={expiryDate}
+            onChange={(e) => setExpiryDate(e.target.value)}
             placeholder="MM/YY"
-            maxLength={5}
+            className="w-full p-2 border rounded-md"
           />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            CVC
-          </label>
+        <div className="w-1/2">
+          <label className="block text-sm font-medium text-gray-700">CVV</label>
           <input
-            type="text"
-            value={cardInfo.cvc}
-            onChange={(e) => onChange({ ...cardInfo, cvc: e.target.value })}
-            className="w-full rounded-lg border-gray-200 focus:border-emerald-500 focus:ring-emerald-500"
+            type="password"
+            value={cvv}
+            onChange={(e) => setCvv(e.target.value)}
             placeholder="123"
-            maxLength={4}
+            className="w-full p-2 border rounded-md"
           />
         </div>
       </div>
-    </div>
+      <button
+        type="submit"
+        className="w-full bg-emerald-500 text-white p-2 rounded-md hover:bg-emerald-600"
+      >
+        Pay Now
+      </button>
+    </form>
   );
 }
